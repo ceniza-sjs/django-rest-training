@@ -5,6 +5,11 @@ python:
 services:
   - docker
 
+before_install:
+  - echo 'DOCKER_OPTS="$DOCKER_OPTS --debug --registry-mirror=https://mirror.gcr.io"'
+  - sudo service docker restart
+  - docker system info
+
 before_script: pip install docker-compose
 
 script:
